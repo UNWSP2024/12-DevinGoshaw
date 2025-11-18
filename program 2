@@ -1,0 +1,53 @@
+#programmer:Devin Goshaw 
+#date: 11/18/2025
+#program: auto program 
+
+import tkinter as tk
+from tkinter import messagebox
+
+def calculate_total():
+    total = 0
+
+    if oil.get() == 1:
+        total += 30
+    if lube.get() == 1:
+        total += 20
+    if rad.get() == 1:
+        total += 40
+    if trans.get() == 1:
+        total += 100
+    if insp.get() == 1:
+        total += 35
+    if muff.get() == 1:
+        total += 200
+    if tire.get() == 1:
+        total += 20
+
+    result_label.config(text="Total Charges: $" + str(total))
+
+
+window = tk.Tk()
+window.title("Joe's Automotive Service Calculator")
+
+oil = tk.IntVar()
+lube = tk.IntVar()
+rad = tk.IntVar()
+trans = tk.IntVar()
+insp = tk.IntVar()
+muff = tk.IntVar()
+tire = tk.IntVar()
+
+tk.Checkbutton(window, text="Oil Change ($30)", variable=oil).pack(anchor="w")
+tk.Checkbutton(window, text="Lube Job ($20)", variable=lube).pack(anchor="w")
+tk.Checkbutton(window, text="Radiator Flush ($40)", variable=rad).pack(anchor="w")
+tk.Checkbutton(window, text="Transmission Fluid ($100)", variable=trans).pack(anchor="w")
+tk.Checkbutton(window, text="Inspection ($35)", variable=insp).pack(anchor="w")
+tk.Checkbutton(window, text="Muffler Replacement ($200)", variable=muff).pack(anchor="w")
+tk.Checkbutton(window, text="Tire Rotation ($20)", variable=tire).pack(anchor="w")
+
+tk.Button(window, text="Calculate Total", command=calculate_total).pack(pady=15)
+
+result_label = tk.Label(window, text="Total Charges: $0")
+result_label.pack(pady=10)
+
+window.mainloop()

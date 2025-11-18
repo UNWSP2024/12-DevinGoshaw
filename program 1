@@ -1,0 +1,44 @@
+# programmer:Devin Goshaw 
+# date:11/18/25
+# program: MPG converter
+
+
+
+import tkinter as tk
+from tkinter import messagebox
+
+def calculateMPG():
+    try:
+        gallons = float(gallonsInput.get())
+        miles = float(milesInput.get())
+
+        if gallons <= 0:
+            messagebox.showerror('Error', 'Gallons have to be greater than 0')
+            return
+        
+        mpg = miles / gallons
+        resultLabel.config(text='MPG: ' + format(mpg, '.2f'))
+    except ValueError:
+        messagebox.showerror('Error', 'Please enter a valid number')
+
+
+window = tk.Tk()  
+window.title('Gas Mileage Calculator')
+
+tk.Label(window, text='Gallons the tank holds:').pack(pady=5)
+gallonsInput = tk.Entry(window)
+gallonsInput.pack(pady=5)
+
+tk.Label(window, text='Miles on a full tank:').pack(pady=5)
+milesInput = tk.Entry(window)
+milesInput.pack(pady=5)
+
+tk.Button(window, text='Calculate MPG', command=calculateMPG).pack(pady=5)
+
+resultLabel = tk.Label(window, text='MPG: ')
+resultLabel.pack(pady=5)
+
+window.mainloop()
+
+
+
